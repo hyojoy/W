@@ -609,11 +609,10 @@ galleryItems.forEach(item=>imgObserver.observe(item));
 /* ── Lightbox ── */
 let currentImg=0;
 function openLightbox(idx){
-  const img=galleryItems[idx]?.querySelector('img');
+  var img=galleryItems[idx]?galleryItems[idx].querySelector('img'):null;
   if(!img)return;
-  // data-src에서 원본 경로 가져오기
-  document.getElementById('lightbox-img').src=img.dataset.full||img.src;
   currentImg=idx;
+  var fullSrc=img.getAttribute('data-full')||img.src;
   document.getElementById('lightbox-img').src=fullSrc;
   document.getElementById('lightbox').classList.add('active');
   document.body.style.overflow='hidden';
@@ -623,11 +622,14 @@ function closeLightbox(){
   document.body.style.overflow='';
 }
 function navLightbox(dir){
-  let next=currentImg+dir;
+  var next=currentImg+dir;
   if(next<0)next=galleryItems.length-1;
   if(next>=galleryItems.length)next=0;
-  const img=galleryItems[next]?.querySelector('img');
-  if(img){currentImg=next;document.getElementById('lightbox-img').src=img.dataset.full||img.src}
+  var img=galleryItems[next]?galleryItems[next].querySelector('img'):null;
+  if(img){
+    currentImg=next;
+    document.getElementById('lightbox-img').src=img.getAttribute('data-full')||img.src;
+  }
 }
 document.getElementById('lightbox').addEventListener('click',function(e){
   if(e.target===this)closeLightbox();
