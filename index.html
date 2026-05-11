@@ -63,7 +63,8 @@ section{padding:56px 28px;text-align:center}
   background:linear-gradient(to bottom,transparent 40%,rgba(250,247,242,.85) 80%,#faf7f2 100%);
 }
 .cover-text{
-  position:relative;z-index:2;padding:0 28px 48px;text-align:center;width:100%;
+  position:relative;z-index:2;padding:0 28px 24px;text-align:center;width:100%;
+  margin-top:20vh;
 }
 .cover-text .label-top{
   font-family:'Cormorant Garamond',serif;
@@ -157,6 +158,17 @@ section{padding:56px 28px;text-align:center}
   aspect-ratio:1;overflow:hidden;border-radius:4px;
   background:#ede6dd;cursor:pointer;position:relative;
 }
+/* 로딩 중 shimmer 애니메이션 */
+@keyframes shimmer{
+  0%{background-position:-200px 0}
+  100%{background-position:200px 0}
+}
+.gallery-item:not(.loaded){
+  background:linear-gradient(90deg,#ede6dd 25%,#f5f0e8 50%,#ede6dd 75%);
+  background-size:400px 100%;
+  animation:shimmer 1.5s infinite;
+}
+.gallery-item.loaded{background:none}
 .gallery-item img{
   width:100%;height:100%;object-fit:cover;
   transition:transform .4s ease;
@@ -369,51 +381,51 @@ section{padding:56px 28px;text-align:center}
     <p class="text-muted text-sm" style="margin-bottom:20px">"함께한 시간, 함께할 시간"</p>
 
     <div class="gallery-grid" id="gallery">
-      <div class="gallery-item" onclick="openLightbox(0)"><img src="photos/KakaoTalk_20260507_093622128_13.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(1)"><img src="photos/KakaoTalk_20260507_093622128_14.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(2)"><img src="photos/KakaoTalk_20260507_093622128_15.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(3)"><img src="photos/KakaoTalk_20260507_093622128_16.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(4)"><img src="photos/KakaoTalk_20260507_093622128_17.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(5)"><img src="photos/KakaoTalk_20260507_093622128_18.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(6)"><img src="photos/KakaoTalk_20260507_093622128_19.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(7)"><img src="photos/KakaoTalk_20260507_093622128_20.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(8)"><img src="photos/KakaoTalk_20260507_093622128_21.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(9)"><img src="photos/KakaoTalk_20260507_093622128_22.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(10)"><img src="photos/KakaoTalk_20260507_093622128_23.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(11)"><img src="photos/KakaoTalk_20260507_093622128_24.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(12)"><img src="photos/KakaoTalk_20260507_093622128_25.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(13)"><img src="photos/KakaoTalk_20260507_093622128_26.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(14)"><img src="photos/KakaoTalk_20260507_093622128_28.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(15)"><img src="photos/KakaoTalk_20260507_093622128_29.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(16)"><img src="photos/KakaoTalk_20260507_093650607.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(17)"><img src="photos/KakaoTalk_20260507_093650607_01.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(18)"><img src="photos/KakaoTalk_20260507_093650607_02.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(19)"><img src="photos/KakaoTalk_20260507_093650607_03.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(20)"><img src="photos/KakaoTalk_20260507_093650607_04.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(21)"><img src="photos/KakaoTalk_20260507_093650607_05.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(22)"><img src="photos/KakaoTalk_20260507_093650607_06.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(23)"><img src="photos/KakaoTalk_20260507_093650607_07.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(24)"><img src="photos/KakaoTalk_20260507_093650607_08.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(25)"><img src="photos/KakaoTalk_20260507_093650607_09.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(26)"><img src="photos/KakaoTalk_20260507_093650607_10.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(27)"><img src="photos/KakaoTalk_20260507_093650607_11.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(28)"><img src="photos/KakaoTalk_20260507_093650607_12.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(29)"><img src="photos/KakaoTalk_20260507_093650607_13.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(30)"><img src="photos/KakaoTalk_20260507_093650607_14.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(31)"><img src="photos/KakaoTalk_20260507_093650607_15.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(32)"><img src="photos/KakaoTalk_20260507_093622128.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(33)"><img src="photos/KakaoTalk_20260507_093622128_01.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(34)"><img src="photos/KakaoTalk_20260507_093622128_02.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(35)"><img src="photos/KakaoTalk_20260507_093622128_03.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(36)"><img src="photos/KakaoTalk_20260507_093622128_04.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(37)"><img src="photos/KakaoTalk_20260507_093622128_05.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(38)"><img src="photos/KakaoTalk_20260507_093622128_06.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(39)"><img src="photos/KakaoTalk_20260507_093622128_07.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(40)"><img src="photos/KakaoTalk_20260507_093622128_08.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(41)"><img src="photos/KakaoTalk_20260507_093622128_09.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(42)"><img src="photos/KakaoTalk_20260507_093622128_10.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(43)"><img src="photos/KakaoTalk_20260507_093622128_11.jpg" alt=""></div>
-      <div class="gallery-item" onclick="openLightbox(44)"><img src="photos/KakaoTalk_20260507_093622128_12.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(0)"><img data-src="photos/KakaoTalk_20260507_093622128_13.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(1)"><img data-src="photos/KakaoTalk_20260507_093622128_14.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(2)"><img data-src="photos/KakaoTalk_20260507_093622128_15.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(3)"><img data-src="photos/KakaoTalk_20260507_093622128_16.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(4)"><img data-src="photos/KakaoTalk_20260507_093622128_17.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(5)"><img data-src="photos/KakaoTalk_20260507_093622128_18.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(6)"><img data-src="photos/KakaoTalk_20260507_093622128_19.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(7)"><img data-src="photos/KakaoTalk_20260507_093622128_20.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(8)"><img data-src="photos/KakaoTalk_20260507_093622128_21.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(9)"><img data-src="photos/KakaoTalk_20260507_093622128_22.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(10)"><img data-src="photos/KakaoTalk_20260507_093622128_23.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(11)"><img data-src="photos/KakaoTalk_20260507_093622128_24.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(12)"><img data-src="photos/KakaoTalk_20260507_093622128_25.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(13)"><img data-src="photos/KakaoTalk_20260507_093622128_26.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(14)"><img data-src="photos/KakaoTalk_20260507_093622128_28.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(15)"><img data-src="photos/KakaoTalk_20260507_093622128_29.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(16)"><img data-src="photos/KakaoTalk_20260507_093650607.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(17)"><img data-src="photos/KakaoTalk_20260507_093650607_01.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(18)"><img data-src="photos/KakaoTalk_20260507_093650607_02.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(19)"><img data-src="photos/KakaoTalk_20260507_093650607_03.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(20)"><img data-src="photos/KakaoTalk_20260507_093650607_04.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(21)"><img data-src="photos/KakaoTalk_20260507_093650607_05.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(22)"><img data-src="photos/KakaoTalk_20260507_093650607_06.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(23)"><img data-src="photos/KakaoTalk_20260507_093650607_07.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(24)"><img data-src="photos/KakaoTalk_20260507_093650607_08.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(25)"><img data-src="photos/KakaoTalk_20260507_093650607_09.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(26)"><img data-src="photos/KakaoTalk_20260507_093650607_10.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(27)"><img data-src="photos/KakaoTalk_20260507_093650607_11.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(28)"><img data-src="photos/KakaoTalk_20260507_093650607_12.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(29)"><img data-src="photos/KakaoTalk_20260507_093650607_13.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(30)"><img data-src="photos/KakaoTalk_20260507_093650607_14.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(31)"><img data-src="photos/KakaoTalk_20260507_093650607_15.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(32)"><img data-src="photos/KakaoTalk_20260507_093622128.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(33)"><img data-src="photos/KakaoTalk_20260507_093622128_01.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(34)"><img data-src="photos/KakaoTalk_20260507_093622128_02.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(35)"><img data-src="photos/KakaoTalk_20260507_093622128_03.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(36)"><img data-src="photos/KakaoTalk_20260507_093622128_04.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(37)"><img data-src="photos/KakaoTalk_20260507_093622128_05.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(38)"><img data-src="photos/KakaoTalk_20260507_093622128_06.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(39)"><img data-src="photos/KakaoTalk_20260507_093622128_07.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(40)"><img data-src="photos/KakaoTalk_20260507_093622128_08.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(41)"><img data-src="photos/KakaoTalk_20260507_093622128_09.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(42)"><img data-src="photos/KakaoTalk_20260507_093622128_10.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(43)"><img data-src="photos/KakaoTalk_20260507_093622128_11.jpg" alt=""></div>
+      <div class="gallery-item" onclick="openLightbox(44)"><img data-src="photos/KakaoTalk_20260507_093622128_12.jpg" alt=""></div>
     </div>
   </section>
 
@@ -559,14 +571,31 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-/* ── Lightbox (갤러리에 실제 사진 넣은 후 작동) ── */
-let currentImg=0;
+/* ── Gallery lazy loading ── */
 const galleryItems=document.querySelectorAll('.gallery-item');
+const imgObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const img=e.target.querySelector('img[data-src]');
+      if(img){
+        img.src=img.dataset.src;
+        img.onload=()=>e.target.classList.add('loaded');
+      }
+      imgObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.01,rootMargin:'0px 0px 200px 0px'});
+galleryItems.forEach(item=>imgObserver.observe(item));
+
+/* ── Lightbox ── */
+let currentImg=0;
 function openLightbox(idx){
   const img=galleryItems[idx]?.querySelector('img');
-  if(!img)return; // placeholder면 무시
+  if(!img)return;
+  // data-src에서 원본 경로 가져오기
+  const fullSrc=img.dataset.src||img.src;
   currentImg=idx;
-  document.getElementById('lightbox-img').src=img.src;
+  document.getElementById('lightbox-img').src=fullSrc;
   document.getElementById('lightbox').classList.add('active');
   document.body.style.overflow='hidden';
 }
@@ -579,7 +608,7 @@ function navLightbox(dir){
   if(next<0)next=galleryItems.length-1;
   if(next>=galleryItems.length)next=0;
   const img=galleryItems[next]?.querySelector('img');
-  if(img){currentImg=next;document.getElementById('lightbox-img').src=img.src}
+  if(img){currentImg=next;document.getElementById('lightbox-img').src=img.dataset.src||img.src}
 }
 document.getElementById('lightbox').addEventListener('click',function(e){
   if(e.target===this)closeLightbox();
