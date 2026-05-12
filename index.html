@@ -606,6 +606,8 @@ section{padding:56px 28px;text-align:center}
     <div class="footer-names">김다윗 ♥ 이효정</div>
     <div class="footer-date">2026. 08. 22</div>
     <span class="footer-heart">🤍</span>
+    <p style="margin-top:24px;font-size:11px;color:#c4b5a3;letter-spacing:1px">© 2026 YH_HomesweetHome. All rights reserved.</p>
+
   </div>
 
 </div><!-- /wrap -->
@@ -667,10 +669,10 @@ function shareInvitation(){
     navigator.share({
       title:'다윗 ♥ 효정 결혼합니다',
       text:'2026년 8월 22일 토요일 낮 12시 | 롯데호텔 서울',
-      url:'https://hyojoy.github.io/W/'
+      url: window.location.href
     }).catch(function(){});
   } else {
-    navigator.clipboard.writeText('https://hyojoy.github.io/W/').then(function(){
+    navigator.clipboard.writeText(window.location.href).then(function(){
       var toast=document.getElementById('copyToast');
       toast.textContent='링크가 복사되었습니다';
       toast.classList.add('show');
