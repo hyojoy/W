@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="icon" type="image/jpeg" href="photos/favicon.jpg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>다윗 ♥ 효정 결혼합니다</title>
@@ -595,7 +596,6 @@ section{padding:56px 28px;text-align:center}
 
 <div class="float-btns">
   <div class="share-menu" id="shareMenu">
-    <button class="share-menu-item" onclick="shareKakao()">카카오톡 공유</button>
     <button class="share-menu-item" onclick="copyLink()">링크 복사</button>
   </div>
   <div class="float-btn" id="shareBtn" onclick="toggleShare()">↗</div>
@@ -656,12 +656,6 @@ function copyLink(){
   document.getElementById('shareMenu').classList.remove('open');
 }
 
-/* ── 카카오톡 공유 ── */
-function shareKakao(){
-  var url='https://hyojoy.github.io/W/';
-  window.open('https://sharer.kakao.com/talk/friends/picker/link?url='+encodeURIComponent(url),'_blank');
-  document.getElementById('shareMenu').classList.remove('open');
-}
 
 /* ── D-Day Countdown ── */
 function updateCountdown(){
