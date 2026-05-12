@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>김다윗 ♥ 이효정 결혼합니다</title>
-<meta property="og:title" content="김다윗 ♥ 이효정 결혼합니다">
+<title>다윗 ♥ 효정 결혼합니다</title>
+<meta property="og:title" content="다윗 ♥ 효정 결혼합니다">
 <meta property="og:description" content="2026년 8월 22일 토요일 낮 12시 | 롯데호텔 서울">
 <meta property="og:image" content="https://hyojoy.github.io/W/photos/KakaoTalk_20260507_093622128_27.jpg">
 <meta property="og:url" content="https://hyojoy.github.io/W/">
@@ -282,6 +282,36 @@ section{padding:56px 28px;text-align:center}
 }
 .copy-toast.show{opacity:1}
 
+.float-btns{
+  position:fixed;bottom:24px;right:16px;z-index:900;
+  display:flex;flex-direction:column;gap:10px;
+}
+.float-btn{
+  width:44px;height:44px;border-radius:50%;border:1px solid #d4c8ba;
+  background:rgba(255,253,249,.95);color:#6b5e52;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:16px;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  transition:all .25s;backdrop-filter:blur(4px);
+}
+.float-btn:active{background:#2c2824;color:#faf7f2;border-color:#2c2824}
+.float-btn.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+.share-menu{
+  position:absolute;bottom:54px;right:0;
+  background:#fffdf9;border:1px solid #e2d8cc;border-radius:10px;
+  box-shadow:0 4px 16px rgba(0,0,0,.1);
+  padding:6px 0;display:none;min-width:160px;
+}
+.share-menu.open{display:block}
+.share-menu-item{
+  display:block;width:100%;padding:10px 16px;
+  font-size:13px;color:#4a423a;cursor:pointer;
+  text-align:left;border:none;background:none;
+  font-family:'Gowun Batang',serif;transition:background .15s;
+}
+.share-menu-item:active{background:#f5f0e8}
+
+
 </style>
 </head>
 <body>
@@ -298,7 +328,7 @@ section{padding:56px 28px;text-align:center}
       <div class="label-top">WEDDING INVITATION</div>
       <div class="cover-names">김다윗 ♥ 이효정</div>
       <div class="cover-date">2026. 08. 22. SAT PM 12:00</div>
-      <div class="cover-venue">롯데호텔 서울</div>
+      <div class="cover-venue">롯데호텔 서울 3층 사파이어홀</div>
     </div>
   </section>
 
@@ -318,8 +348,8 @@ section{padding:56px 28px;text-align:center}
     <p>바쁘시더라도 귀한 걸음 하시어</p>
     <p>축복해 주시면 감사하겠습니다.</p>
     <div class="parents mt-lg">
-      <p>김문환 · 백경숙 <span class="text-xs">의 아들</span> <strong>김다윗</strong></p>
-      <p>이태헌 · 박경옥 <span class="text-xs">의 딸</span> <strong>이효정</strong></p>
+      <p>김문환 · 백경숙 <span class="text-xs">의 아들</span> <strong>다윗</strong></p>
+      <p>이태헌 · 박경옥 <span class="text-xs">의 딸</span> <strong>효정</strong></p>
     </div>
   </section>
 
@@ -379,7 +409,7 @@ section{padding:56px 28px;text-align:center}
       </tbody>
     </table>
 
-    <p class="mt-md text-muted text-sm"><strong>김다윗</strong> ♥ <strong>이효정</strong>의 결혼식까지</p>
+    <p class="mt-md text-muted text-sm"><strong>다윗</strong> ♥ <strong>효정</strong>의 결혼식까지</p>
 
     <div class="countdown mt-sm" id="countdown">
       <div class="countdown-item"><span class="countdown-num" id="cd-days">-</span><span class="countdown-unit">DAYS</span></div>
@@ -562,6 +592,14 @@ section{padding:56px 28px;text-align:center}
 
 </div><!-- /wrap -->
 
+<div class="float-btns">
+  <div class="share-menu" id="shareMenu">
+    <button class="share-menu-item" onclick="shareKakao()">카카오톡 공유</button>
+    <button class="share-menu-item" onclick="copyLink()">링크 복사</button>
+  </div>
+  <div class="float-btn" id="shareBtn" onclick="toggleShare()">↗</div>
+  <div class="float-btn hide" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+</div>
 
 <!-- ═══════════════════════════════════════
      LIGHTBOX
@@ -588,6 +626,42 @@ function copyText(text){
     setTimeout(function(){toast.classList.remove('show')},1500);
   });
 }
+
+/* ── 맨 위로 버튼 (스크롤 200px 이상이면 표시) ── */
+window.addEventListener('scroll',function(){
+  var btn=document.getElementById('topBtn');
+  if(window.scrollY>200){btn.classList.remove('hide')}
+  else{btn.classList.add('hide')}
+});
+
+/* ── 공유 메뉴 토글 ── */
+function toggleShare(){
+  document.getElementById('shareMenu').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.float-btns')){
+    document.getElementById('shareMenu').classList.remove('open');
+  }
+});
+
+/* ── 링크 복사 ── */
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(function(){
+    var toast=document.getElementById('copyToast');
+    toast.textContent='링크가 복사되었습니다';
+    toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show');toast.textContent='계좌번호가 복사되었습니다'},1500);
+  });
+  document.getElementById('shareMenu').classList.remove('open');
+}
+
+/* ── 카카오톡 공유 ── */
+function shareKakao(){
+  var url='https://hyojoy.github.io/W/';
+  window.open('https://sharer.kakao.com/talk/friends/picker/link?url='+encodeURIComponent(url),'_blank');
+  document.getElementById('shareMenu').classList.remove('open');
+}
+
 /* ── D-Day Countdown ── */
 function updateCountdown(){
   const wedding=new Date('2026-08-22T12:00:00+09:00');
