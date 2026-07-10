@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<link rel="icon" type="image/jpeg" href="photos/favicon.jpg">
+<script type="text/javascript" nonce="8a2ed8d2d3ef42cf9ebeeee9fe1" src="//local.adguard.org?ts=1783671289906&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000d0a871f7993ac840635ea482%26fn%3Dwedding_invitation_scroll_gallery.html%26cd%3Dattachment%26ts%3D495464%26p%3Dfs%26cid%3D1%26sig%3D004c08504f3fdaa52f16c3dea898f9b45145815f1d5a44464971392b4f57062a%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="8a2ed8d2d3ef42cf9ebeeee9fe1" src="//local.adguard.org?ts=1783671289906&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script><link rel="icon" type="image/jpeg" href="photos/favicon.jpg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>다윗 ♥ 효정 결혼합니다</title>
@@ -387,19 +387,19 @@ section{padding:56px 28px;text-align:center}
       <div class="couple-card">
         <div class="couple-photo-frame">
           <!-- <img src="photos/groom.jpg" alt="신랑"> -->
-          <img src="photos/groomprofile.jpg" alt="신랑">
+          <img src="photos/groomprofile.png" alt="신랑">
         </div>
         <div class="couple-role">신랑</div>
         <div class="couple-name">김다윗</div>
-        <div class="couple-desc">"오션맨🐬"</div>
+        <div class="couple-desc">"아쿠아맨🥥"</div>
       </div>
       <div class="couple-card">
         <div class="couple-photo-frame">
-          <img src="photos/brideprofile.jpg" alt="신부">
+          <img src="photos/brideprofile.png" alt="신부">
         </div>
         <div class="couple-role">신부</div>
         <div class="couple-name">이효정</div>
-        <div class="couple-desc">"낚시걸🐟"</div>
+        <div class="couple-desc">"평화주의🐵"</div>
       </div>
     </div>
   </section>
@@ -768,6 +768,54 @@ function navLightbox(dir){
 }
 document.getElementById('lightbox').addEventListener('click',function(e){
   if(e.target===this)closeLightbox();
+});
+
+/* ── Lightbox wheel / trackpad navigation ── */
+let lightboxWheelLocked=false;
+document.getElementById('lightbox').addEventListener('wheel',function(e){
+  if(!this.classList.contains('active'))return;
+  e.preventDefault();
+  if(lightboxWheelLocked)return;
+
+  const amount=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+  if(Math.abs(amount)<8)return;
+
+  lightboxWheelLocked=true;
+  navLightbox(amount>0?1:-1);
+  setTimeout(function(){lightboxWheelLocked=false},350);
+},{passive:false});
+
+/* ── Mobile swipe navigation ── */
+let lightboxTouchStartX=0;
+let lightboxTouchStartY=0;
+let lightboxTouchMoving=false;
+const lightboxEl=document.getElementById('lightbox');
+
+lightboxEl.addEventListener('touchstart',function(e){
+  if(!this.classList.contains('active')||!e.touches.length)return;
+  lightboxTouchStartX=e.touches[0].clientX;
+  lightboxTouchStartY=e.touches[0].clientY;
+  lightboxTouchMoving=true;
+},{passive:true});
+
+lightboxEl.addEventListener('touchend',function(e){
+  if(!lightboxTouchMoving||!e.changedTouches.length)return;
+  lightboxTouchMoving=false;
+
+  const dx=e.changedTouches[0].clientX-lightboxTouchStartX;
+  const dy=e.changedTouches[0].clientY-lightboxTouchStartY;
+
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){
+    navLightbox(dx<0?1:-1);
+  }
+},{passive:true});
+
+/* ── Keyboard navigation ── */
+document.addEventListener('keydown',function(e){
+  if(!lightboxEl.classList.contains('active'))return;
+  if(e.key==='ArrowLeft')navLightbox(-1);
+  else if(e.key==='ArrowRight')navLightbox(1);
+  else if(e.key==='Escape')closeLightbox();
 });
 </script>
 <div class="copy-toast" id="copyToast">계좌번호가 복사되었습니다</div>
